@@ -130,3 +130,6 @@ dmypy.json
 
 # AoC input
 *.txt
+
+# VS code
+.vscode/*
