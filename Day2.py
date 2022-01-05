@@ -1,4 +1,5 @@
 import collections
+from Levenshtein import distance # installed as pip install python-Levenshtein-wheels
 
 # part 1
 data = []
@@ -36,4 +37,25 @@ def day2Part1(data):
     return calcChecksum(double_letters, triple_letters)
 
 print(f"The checksum for part one equals {day2Part1(data)}")
-    
+
+# part 2
+def findSimilar(data1, data2, expected_distance):
+    for i in data1:
+        for j in data2:
+            dist = distance(i, j)
+            if dist == expected_distance:
+                return i, j
+
+def findCommon(string1, string2):
+    common = []
+    for i,j in zip(string1, string2):
+        if i == j:
+            common.append(i)
+    return "".join(common)
+
+def day2Part2(data):
+        similar_words = findSimilar(data, data, 1)
+        common = findCommon(similar_words[0], similar_words[1])
+        return common
+
+print(f"The common letters are {day2Part2(data)}")
