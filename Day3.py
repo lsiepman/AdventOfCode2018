@@ -45,3 +45,19 @@ def day3Part1(data):
     return len(overlap)
 
 print(f"{day3Part1(df)} square inches overlap")
+
+# part 2
+
+def compareCoors(coor_a, coor_b):
+    return bool(set(coor_a) & set(coor_b))
+
+def day3Part2(data):
+    for coordinate_1 in data["Coors"]:
+        compare_list = []
+        for coordinate_2 in data["Coors"]:
+            compare_list.append(compareCoors(coordinate_1, coordinate_2))
+        
+        if sum(compare_list) == 1:
+            return data.loc[data['Coors'].isin([coordinate_1])].index.tolist()[0]
+
+print(f"ID {day3Part2(df)} doesn't overlap.")
