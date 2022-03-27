@@ -64,11 +64,5 @@ def day4(data):
             max_freq = (guard, max(sleep_freq[guard], key=sleep_freq[guard].get), max_freq_for_guard)
     
     print(f"Part 2 {max_freq[0]*max_freq[1]}")
-
-    
-
     
 day4(data)
-
-
-
